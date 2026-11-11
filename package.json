@@ -1,0 +1,58 @@
+{
+  "name": "vscode-ext-dev-test-startup-prompt",
+  "displayName": "Dev + Test Startup Prompt",
+  "description": "Ask whether to run the 'dev + test' workspace task when a project opens.",
+  "version": "1.0.0",
+  "publisher": "viiinzzz",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/viiinzzz/vscode-ext-dev-test-startup-prompt"
+  },
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "workspaceContains:package.json"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "devTestStartup.start",
+        "title": "Start Dev + Test"
+      }
+    ],
+    "configuration": {
+      "title": "Dev + Test Startup Prompt",
+      "properties": {
+        "devTestStartup.taskName": {
+          "type": "string",
+          "default": "dev + test",
+          "description": "Name of the VS Code task to run when you choose Yes."
+        },
+        "devTestStartup.prompt": {
+          "type": "string",
+          "default": "Do you want to start dev + test?",
+          "description": "Message displayed when the workspace opens."
+        },
+        "devTestStartup.autostart": {
+          "type": "boolean",
+          "default": false,
+          "description": "Start dev + test automatically when the workspace opens, without prompting."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "npx @vscode/vsce package --allow-missing-repository --allow-star-activation",
+    "install": "code --install-extension ./vscode-ext-dev-test-startup-prompt-1.0.0.vsix --force",
+    "reload": "code --open-url vscode://viiinzzz.vscode-ext-dev-test-startup-prompt/reload",
+    "deploy": "npm run build && npm run install && npm run reload",
+    "release:minor": "node scripts/release.js minor",
+    "release:major": "node scripts/release.js major"
+  }
+}
