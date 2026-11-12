@@ -2,7 +2,7 @@
   "name": "vscode-ext-dev-test-startup-prompt",
   "displayName": "Dev + Test Startup Prompt",
   "description": "Ask whether to run the 'dev + test' workspace task when a project opens.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "publisher": "viiinzzz",
   "repository": {
     "type": "git",
